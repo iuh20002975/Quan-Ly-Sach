@@ -5,25 +5,40 @@ import { useEffect, useState } from 'react';
 
 const UserPage = () => {
     const [dataUser, setDataUser] = useState([]);
+    const [current, setCurrent] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+    const [total, setTotal] = useState(0);
 
     //empty array => run one 
     useEffect(() => {
         console.log("run useEffect 111");
         loadUser();
-    }, []);
+    }, [current, pageSize]);
 
     const loadUser = async () => {
 
-        const res = await fetchAllUserAPI()
-        setDataUser(res.data)
+        const res = await fetchAllUserAPI(current, pageSize);
+        if (res.data) {
+            setDataUser(res.data.result)
+            setCurrent(res.data.meta.current);
+            setPageSize(res.data.meta.pageSize);
+            setTotal(res.data.meta.total);
+        }
+
 
     }
+    console.log(">>>check pageSize: ", pageSize);
     return (
         <div style={{ padding: "20px" }}>
             <UserForm loadUser={loadUser} />
             <UserTable
                 dataUser={dataUser}
                 loadUser={loadUser}
+                current={current}
+                pageSize={pageSize}
+                total={total}
+                setCurrent={setCurrent}
+                setPageSize={setPageSize}
             />
         </div>
     )
