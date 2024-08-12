@@ -11,7 +11,7 @@ const UserPage = () => {
 
     //empty array => run one 
     useEffect(() => {
-        console.log("run useEffect 111");
+
         loadUser();
     }, [current, pageSize]);
 
@@ -27,7 +27,7 @@ const UserPage = () => {
 
 
     }
-    console.log(">>>check pageSize: ", pageSize);
+
     return (
         <div style={{ padding: "20px" }}>
             <UserForm loadUser={loadUser} />

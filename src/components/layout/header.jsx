@@ -2,7 +2,7 @@
 import { Link, NavLink } from 'react-router-dom';
 // import './header.css';
 import { Menu } from 'antd';
-import { UsergroupAddOutlined, HomeOutlined, ContainerOutlined, SettingOutlined } from '@ant-design/icons';
+import { UsergroupAddOutlined, HomeOutlined, ContainerOutlined, SettingOutlined, LoginOutlined, AliwangwangOutlined } from '@ant-design/icons';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
 
     const { user } = useContext(AuthContext);
 
-    console.log(">>>check data", user);
+
 
     const onClick = (e) => {
         console.log('click ', e);
@@ -33,23 +33,30 @@ const Header = () => {
             label: <Link to={"/books"}>Book</Link>,
             key: 'books',
             icon: <ContainerOutlined />,
-
         },
-        {
-            label: 'Cài đặt',
+
+
+        ...(!user.id ? [{
+            label: <Link to={"/login"}>Đăng nhập</Link>,
+            key: 'login',
+            icon: <LoginOutlined />,
+        }] : []),
+
+
+        ...(user.id ? [{
+            label: `Wellcome ${user.fullName}`,
             key: 'setting',
-            icon: <SettingOutlined />,
+            icon: <AliwangwangOutlined />,
             children: [
-                {
-                    label: <Link to={"/login"}>Đăng nhập</Link>,
-                    key: 'login',
-                },
                 {
                     label: 'Đăng xuất',
                     key: 'logout',
                 },
             ],
-        },
+        }] : []),
+
+
+
 
     ];
     return (
