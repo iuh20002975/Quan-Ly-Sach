@@ -3,13 +3,21 @@ import { Link, NavLink } from 'react-router-dom';
 // import './header.css';
 import { Menu } from 'antd';
 import { UsergroupAddOutlined, HomeOutlined, ContainerOutlined, SettingOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/auth.context';
 const Header = () => {
-    const [current, setCurrent] = useState('mail');
+
+    const [current, setCurrent] = useState('');
+
+    const { user } = useContext(AuthContext);
+
+    console.log(">>>check data", user);
+
     const onClick = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
     };
+
     const items = [
         {
             label: <Link to={"/"}>Home</Link>,

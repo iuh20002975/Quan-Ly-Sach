@@ -14,6 +14,7 @@ import BookPage from './pages/book.jsx';
 import './styles/global.css';
 import TodoApp from './components/todo/ToDoApp.jsx';
 import ErrorPage from './pages/error.jsx';
+import { AuthWrapper } from './components/context/auth.context.jsx';
 
 //buoc2_router
 const router = createBrowserRouter([
@@ -48,7 +49,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-
-  <RouterProvider router={router} />
+  <AuthWrapper>
+    <RouterProvider router={router} />
+  </AuthWrapper>
   // </React.StrictMode>,
 )
