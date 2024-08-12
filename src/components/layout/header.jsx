@@ -2,7 +2,7 @@
 import { Link, NavLink } from 'react-router-dom';
 // import './header.css';
 import { Menu } from 'antd';
-import { UsergroupAddOutlined, HomeOutlined, ContainerOutlined } from '@ant-design/icons';
+import { UsergroupAddOutlined, HomeOutlined, ContainerOutlined, SettingOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 const Header = () => {
     const [current, setCurrent] = useState('mail');
@@ -26,6 +26,21 @@ const Header = () => {
             key: 'books',
             icon: <ContainerOutlined />,
 
+        },
+        {
+            label: 'Cài đặt',
+            key: 'setting',
+            icon: <SettingOutlined />,
+            children: [
+                {
+                    label: <Link to={"/login"}>Đăng nhập</Link>,
+                    key: 'login',
+                },
+                {
+                    label: 'Đăng xuất',
+                    key: 'logout',
+                },
+            ],
         },
 
     ];
