@@ -17,6 +17,7 @@ const PrivateRoute = (props) => {
     // return (<Navigate to="/landing" replace />);
     return (
         <Result
+            //chua dang nhap
             status="403"
             title="Unauthorize!"
             subTitle={"Bạn cần đăng nhập để truy cập nguồn tài nguyên."}

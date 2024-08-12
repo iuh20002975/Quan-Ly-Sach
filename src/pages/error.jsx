@@ -8,6 +8,7 @@ export default function ErrorPage() {
 
     return (
         <Result
+            //sai dia chi
             status="404"
             title="Oops!"
             subTitle={error.statusText || error.message}
