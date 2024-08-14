@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const ToDoNew = (props) => {
     //tao state luu tru gia tri trong o input
-    const [valueInput, setValueInput] = useState("An com")
+    const [valueInput, setValueInput] = useState("Nguyen Long")
 
     const { addNewToDo } = props;
     console.log(props);
