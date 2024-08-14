@@ -16,6 +16,7 @@ import TodoApp from './components/todo/ToDoApp.jsx';
 import ErrorPage from './pages/error.jsx';
 import { AuthWrapper } from './components/context/auth.context.jsx';
 import PrivateRoute from './pages/private.route.jsx';
+import 'nprogress/nprogress.css';
 
 //buoc2_router
 const router = createBrowserRouter([
